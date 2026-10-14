@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark" dir="rtl" lang="ar">
-<head>
+<html class="dark" dir="rtl" lang="ar"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>الموقع الشخصي</title>
@@ -21,6 +20,7 @@
     .page-view.active { display: block; }
   </style>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -240,14 +240,14 @@
 <span class="material-symbols-outlined text-[16px]">arrow_back</span>
 </button>
 </div>
-<form class="space-y-4" onsubmit="event.preventDefault(); copyText('', 'تم تسجيل الدخول بنجاح');">
+<form class="space-y-4" id="form-login">
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">البريد الإلكتروني أو اسم المستخدم</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="name@example.com" required="" type="text"/>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="login-email" placeholder="name@example.com" required="" type="email"/>
 </div>
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">كلمة المرور</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" required="" type="password"/>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="login-password" placeholder="••••••••" required="" type="password"/>
 </div>
 <button class="w-full h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-6" type="submit">
 <span>دخول</span>
@@ -271,18 +271,18 @@
 <span class="material-symbols-outlined text-[16px]">arrow_back</span>
 </button>
 </div>
-<form class="space-y-4" onsubmit="event.preventDefault(); copyText('', 'تم إنشاء الحساب بنجاح');">
+<form class="space-y-4" id="form-register">
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">الاسم الكامل</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="الاسم الكامل" required="" type="text"/>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="register-name" placeholder="الاسم الكامل" required="" type="text"/>
 </div>
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">البريد الإلكتروني</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="name@example.com" required="" type="email"/>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="register-email" placeholder="name@example.com" required="" type="email"/>
 </div>
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">كلمة المرور</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" required="" type="password"/>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="register-password" placeholder="••••••••" required="" type="password"/>
 </div>
 <button class="w-full h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-6" type="submit">
 <span>تسجيل حساب</span>
@@ -304,11 +304,16 @@
 </footer>
 <!-- إشعار النسخ -->
 <div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-surface-container-highest border border-primary/40 text-on-surface px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5 opacity-0 pointer-events-none transition-all duration-300 z-50 transform translate-y-3" id="toastNotification">
-<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="material-symbols-outlined text-primary text-[20px]" id="toastIcon">check_circle</span>
 <span class="text-xs sm:text-sm font-semibold text-on-surface" id="toastMessage">تم النسخ بنجاح</span>
 </div>
-<!-- سكربت التنقل -->
+<!-- سكربت التنقل و Supabase -->
 <script>
+    const supabase = window.supabase.createClient(
+      'https://jzfqyhskxfsfsrglmbac.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6ZnF5aHNreGZzZnNyZ2xtYmFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5MDUyMDMsImV4cCI6MjEwNzQ4MTIwM30.5Wx2X8GgXQWQ4_W6vExY3QZ_PhND3T_D68Iq-03LjYE'
+    );
+
     function navigateTo(viewId) {
       document.querySelectorAll('.page-view').forEach(view => {
         view.classList.remove('active');
@@ -321,7 +326,7 @@
     }
 
     let toastTimer;
-    function copyText(text, message) {
+    function copyText(text, message, isError = false) {
       if (text) {
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(text);
@@ -339,9 +344,15 @@
 
       const toast = document.getElementById('toastNotification');
       const toastMsg = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
       if (!toast || !toastMsg) return;
 
       toastMsg.textContent = message;
+      if (toastIcon) {
+        toastIcon.textContent = isError ? 'error' : 'check_circle';
+        toastIcon.className = isError ? 'material-symbols-outlined text-error text-[20px]' : 'material-symbols-outlined text-primary text-[20px]';
+      }
+
       toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
       toast.classList.add('opacity-100', 'translate-y-0');
 
@@ -349,8 +360,71 @@
       toastTimer = setTimeout(() => {
         toast.classList.remove('opacity-100', 'translate-y-0');
         toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
-      }, 2500);
+      }, 3000);
+    }
+
+    // ربط نموذج إنشاء حساب جديد
+    const formRegister = document.getElementById('form-register');
+    if (formRegister) {
+      formRegister.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const fullName = document.getElementById('register-name').value.trim();
+        const email = document.getElementById('register-email').value.trim();
+        const password = document.getElementById('register-password').value;
+
+        try {
+          const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+              data: {
+                full_name: fullName
+              }
+            }
+          });
+
+          if (error) {
+            copyText('', error.message || 'حدث خطأ أثناء إنشاء الحساب', true);
+          } else {
+            copyText('', 'تم إنشاء الحساب بنجاح');
+            formRegister.reset();
+            setTimeout(() => {
+              navigateTo('login');
+            }, 1200);
+          }
+        } catch (err) {
+          copyText('', err.message || 'حدث خطأ غير متوقع', true);
+        }
+      });
+    }
+
+    // ربط نموذج تسجيل الدخول
+    const formLogin = document.getElementById('form-login');
+    if (formLogin) {
+      formLogin.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        try {
+          const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+          });
+
+          if (error) {
+            copyText('', error.message || 'خطأ في بيانات تسجيل الدخول', true);
+          } else {
+            copyText('', 'تم تسجيل الدخول بنجاح');
+            formLogin.reset();
+            setTimeout(() => {
+              navigateTo('home');
+            }, 1000);
+          }
+        } catch (err) {
+          copyText('', err.message || 'حدث خطأ أثناء تسجيل الدخول', true);
+        }
+      });
     }
   </script>
-</body>
-</html>
+</body></html>
