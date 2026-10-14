@@ -240,20 +240,44 @@
 <span class="material-symbols-outlined text-[16px]">arrow_back</span>
 </button>
 </div>
-<form class="space-y-4" id="loginForm" onsubmit="handleLogin(event)">
+<form class="space-y-4" id="loginForm" onsubmit="handleLogin(event)"><div class="space-y-4" id="loginFieldsBlock">
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">البريد الإلكتروني</label>
 <input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="loginEmail" placeholder="name@example.com" required="" type="email"/>
 </div>
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">كلمة المرور</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="loginPassword" placeholder="••••••••" required="" type="password"/>
+<div class="relative flex items-center"><input class="w-full h-11 pr-3.5 pl-11 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="loginPassword" placeholder="••••••••" required="" type="password"/><button class="absolute left-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors flex items-center justify-center cursor-pointer p-1" onclick="const inp=document.getElementById('loginPassword'); const ic=this.querySelector('.material-symbols-outlined'); if(inp.type==='password'){ inp.type='text'; ic.textContent='visibility_off'; } else { inp.type='password'; ic.textContent='visibility'; }" title="إظهار/إخفاء كلمة المرور" type="button"><span class="material-symbols-outlined text-[19px]">visibility</span></button></div>
+<div class="flex justify-end mt-2">
+<button class="text-xs text-outline hover:text-primary transition-colors cursor-pointer" onclick="toggleResetPasswordView(true)" type="button">
+        نسيت كلمة المرور؟
+      </button>
+</div>
 </div>
 <button class="w-full h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-6 cursor-pointer" id="loginSubmitBtn" type="submit">
 <span>دخول</span>
 <span class="material-symbols-outlined text-[18px]">login</span>
 </button>
-</form>
+</div>
+<div class="hidden space-y-4 pt-1" id="resetPasswordBlock">
+<div class="p-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-xs text-on-surface-variant leading-relaxed">
+    أدخل بريدك الإلكتروني المسجل وسنرسل لك رابطاً لإعادة تعيين كلمة المرور فوراً.
+  </div>
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1.5">البريد الإلكتروني لاستعادة الحساب</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="resetEmail" placeholder="name@example.com" type="email"/>
+</div>
+<button class="w-full h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-4 cursor-pointer" id="resetSubmitBtn" onclick="handleResetPassword(event)" type="button">
+<span>إرسال رابط استعادة كلمة المرور</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<div class="flex justify-center pt-2">
+<button class="text-xs text-outline hover:text-primary flex items-center gap-1 transition-colors cursor-pointer" onclick="toggleResetPasswordView(false)" type="button">
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+<span>العودة لتسجيل الدخول</span>
+</button>
+</div>
+</div></form>
 <div class="mt-6 pt-4 border-t border-outline-variant/20 text-center">
 <p class="text-xs text-outline">ليس لديك حساب؟ 
           <button class="text-primary hover:underline font-semibold mr-1 cursor-pointer" onclick="navigateTo('register')" type="button">إنشاء حساب جديد</button>
@@ -282,7 +306,7 @@
 </div>
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">كلمة المرور (6 أحرف أو أرقام على الأقل)</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="regPassword" minlength="6" placeholder="••••••••" required="" type="password"/>
+<div class="relative flex items-center"><input class="w-full h-11 pr-3.5 pl-11 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="regPassword" minlength="6" placeholder="••••••••" required="" type="password"/><button class="absolute left-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors flex items-center justify-center cursor-pointer p-1" onclick="const inp=document.getElementById('regPassword'); const ic=this.querySelector('.material-symbols-outlined'); if(inp.type==='password'){ inp.type='text'; ic.textContent='visibility_off'; } else { inp.type='password'; ic.textContent='visibility'; }" title="إظهار/إخفاء كلمة المرور" type="button"><span class="material-symbols-outlined text-[19px]">visibility</span></button></div>
 </div>
 <button class="w-full h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-6 cursor-pointer" id="regSubmitBtn" type="submit">
 <span>تسجيل الحساب الآن</span>
@@ -447,5 +471,75 @@
       showToast(message, true);
     }
   </script>
-</body>
+<script>
+  function toggleResetPasswordView(showReset) {
+    const loginBlock = document.getElementById('loginFieldsBlock');
+    const resetBlock = document.getElementById('resetPasswordBlock');
+    const passwordInput = document.getElementById('loginPassword');
+    const resetEmailInput = document.getElementById('resetEmail');
+    const loginEmailInput = document.getElementById('loginEmail');
+    
+    if (showReset) {
+      if (loginBlock) loginBlock.classList.add('hidden');
+      if (resetBlock) resetBlock.classList.remove('hidden');
+      if (passwordInput) passwordInput.removeAttribute('required');
+      if (resetEmailInput && loginEmailInput && loginEmailInput.value) {
+        resetEmailInput.value = loginEmailInput.value;
+      }
+    } else {
+      if (loginBlock) loginBlock.classList.remove('hidden');
+      if (resetBlock) resetBlock.classList.add('hidden');
+      if (passwordInput) passwordInput.setAttribute('required', '');
+    }
+  }
+
+  async function handleResetPassword(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const resetEmailInput = document.getElementById('resetEmail');
+    const email = resetEmailInput ? resetEmailInput.value.trim() : '';
+    const btn = document.getElementById('resetSubmitBtn');
+
+    if (!email) {
+      if (typeof showToast === 'function') {
+        showToast('يرجى إدخال البريد الإلكتروني أولاً', false);
+      }
+      return;
+    }
+
+    if (!supabaseClient) {
+      if (typeof showToast === 'function') {
+        showToast('خطأ: تعذر الاتصال بخادم قاعدة البيانات', false);
+      }
+      return;
+    }
+
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+    }
+
+    try {
+      const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.href
+      });
+
+      if (error) {
+        if (typeof showToast === 'function') showToast(error.message, false);
+      } else {
+        if (typeof showToast === 'function') {
+          showToast('تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني', true);
+        }
+        if (resetEmailInput) resetEmailInput.value = '';
+        setTimeout(() => toggleResetPasswordView(false), 2000);
+      }
+    } catch (err) {
+      if (typeof showToast === 'function') showToast('حدث خطأ غير متوقع أثناء إرسال الرابط', false);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+      }
+    }
+  }
+</script></body>
 </html>
