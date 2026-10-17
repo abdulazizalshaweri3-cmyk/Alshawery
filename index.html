@@ -36,43 +36,9 @@
     .font-arabic { font-family: 'Alexandria', 'Plus Jakarta Sans', sans-serif; }
     .page-view { 
       display: none; 
-      opacity: 0;
-      transition: opacity 0.25s ease-in-out;
     }
     .page-view.active { 
       display: block; 
-      opacity: 1;
-    }
-  </style>
-
-  <script>
-    // فحص مبكر فوري وفائق السرعة قبل رسم الصفحة لمنع أي وميض أو اهتزاز
-    (function() {
-      try {
-        var h = window.location.hash || '';
-        var s = window.location.search || '';
-        var u = window.location.href || '';
-        if (h.indexOf('type=recovery') !== -1 || h.indexOf('access_token') !== -1 || s.indexOf('type=recovery') !== -1 || s.indexOf('code=') !== -1 || u.indexOf('type=recovery') !== -1) {
-          document.documentElement.classList.add('is-recovery-mode');
-        }
-      } catch (e) {}
-    })();
-  </script>
-
-  <style>
-    /* عندما يكون الرابط رابط استعادة، إخفاء الصفحة الرئيسية وإظهار واجهة تسجيل الدخول مسبقاً لمنع القفز */
-    html.is-recovery-mode #view-home {
-      display: none !important;
-    }
-    html.is-recovery-mode #view-login {
-      display: block !important;
-      opacity: 1 !important;
-    }
-    html.is-recovery-mode #loginFieldsBlock {
-      display: none !important;
-    }
-    html.is-recovery-mode #updatePasswordBlock {
-      display: block !important;
     }
   </style>
 
@@ -287,7 +253,7 @@
     </div>
   </main>
 
-  <!-- الصفحة 3: تسجيل الدخول واستعادة وتعيين كلمة المرور -->
+  <!-- الصفحة 3: تسجيل الدخول -->
   <main class="page-view w-full max-w-md mx-auto px-4 pt-10 pb-16" id="view-login">
     <div class="rounded-3xl bg-surface-container/80 border border-outline-variant/50 backdrop-blur-2xl p-8 shadow-2xl">
       <div class="flex items-center justify-between mb-6 pb-3 border-b border-outline-variant/30">
@@ -328,7 +294,7 @@
         <!-- 2. واجهة طلب رابط استعادة كلمة المرور -->
         <div class="hidden space-y-4 pt-1" id="resetPasswordBlock">
           <div class="p-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-xs text-on-surface-variant leading-relaxed">
-            أدخل بريدك الإلكتروني المسجل وسنرسل لك رابطاً لإعادة تعيين كلمة المرور فوراً.
+            أدخل بريدك الإلكتروني المسجل وسنرسل لك رابطاً لإعادة تعيين كلمة المرور فوراً عبر صفحة الاستعادة المخصصة.
           </div>
           <div>
             <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">البريد الإلكتروني لاستعادة الحساب</label>
@@ -344,39 +310,6 @@
               <span>العودة لتسجيل الدخول</span>
             </button>
           </div>
-        </div>
-
-        <!-- 3. واجهة إدخال كلمة المرور الجديدة وتأكيدها -->
-        <div class="hidden space-y-4 pt-1" id="updatePasswordBlock">
-          <div class="p-3.5 rounded-xl bg-surface-container-lowest border border-primary/40 text-xs text-on-surface flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-[20px]">lock_reset</span>
-            <span class="font-semibold text-primary">تم التحقق من رابط الاستعادة بنجاح!</span>
-          </div>
-          <p class="text-xs text-on-surface-variant leading-relaxed">
-            أدخل كلمة المرور الجديدة لحسابك الآن، ثم اضغط على زر حفظ كلمة المرور وسيتم نقلك مباشرة لتسجيل الدخول.
-          </p>
-          <div>
-            <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">كلمة المرور الجديدة</label>
-            <div class="relative flex items-center">
-              <input class="w-full h-11 pr-3.5 pl-11 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="newPasswordInput" minlength="6" placeholder="••••••••" type="password"/>
-              <button class="absolute left-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors flex items-center justify-center cursor-pointer p-1" onclick="const inp=document.getElementById('newPasswordInput'); const ic=this.querySelector('.material-symbols-outlined'); if(inp.type==='password'){ inp.type='text'; ic.textContent='visibility_off'; } else { inp.type='password'; ic.textContent='visibility'; }" title="إظهار/إخفاء" type="button">
-                <span class="material-symbols-outlined text-[19px]">visibility</span>
-              </button>
-            </div>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">تأكيد كلمة المرور الجديدة</label>
-            <div class="relative flex items-center">
-              <input class="w-full h-11 pr-3.5 pl-11 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="confirmNewPasswordInput" minlength="6" placeholder="••••••••" type="password"/>
-              <button class="absolute left-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors flex items-center justify-center cursor-pointer p-1" onclick="const inp=document.getElementById('confirmNewPasswordInput'); const ic=this.querySelector('.material-symbols-outlined'); if(inp.type==='password'){ inp.type='text'; ic.textContent='visibility_off'; } else { inp.type='password'; ic.textContent='visibility'; }" title="إظهار/إخفاء" type="button">
-                <span class="material-symbols-outlined text-[19px]">visibility</span>
-              </button>
-            </div>
-          </div>
-          <button class="w-full h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-4 cursor-pointer" id="updatePasswordSubmitBtn" onclick="handleUpdatePassword(event)" type="button">
-            <span>حفظ كلمة المرور الجديدة</span>
-            <span class="material-symbols-outlined text-[18px]">check</span>
-          </button>
         </div>
       </form>
 
@@ -578,13 +511,10 @@
     function toggleResetPasswordView(showReset) {
       const loginBlock = document.getElementById('loginFieldsBlock');
       const resetBlock = document.getElementById('resetPasswordBlock');
-      const updateBlock = document.getElementById('updatePasswordBlock');
       const passwordInput = document.getElementById('loginPassword');
       const resetEmailInput = document.getElementById('resetEmail');
       const loginEmailInput = document.getElementById('loginEmail');
       const cardTitle = document.getElementById('loginCardTitle');
-      
-      if (updateBlock) updateBlock.classList.add('hidden');
       
       if (showReset) {
         if (loginBlock) loginBlock.classList.add('hidden');
@@ -624,7 +554,7 @@
       }
 
       try {
-        const redirectUrl = window.location.origin + window.location.pathname;
+        const redirectUrl = 'https://alshawery.vercel.app/reset.html';
         const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
           redirectTo: redirectUrl
         });
@@ -644,150 +574,6 @@
           btn.classList.remove('opacity-50');
         }
       }
-    }
-
-    function showUpdatePasswordForm() {
-      // إزالة فئة recovery-mode لتسليم التحكم الطبيعي
-      document.documentElement.classList.remove('is-recovery-mode');
-      
-      const loginBlock = document.getElementById('loginFieldsBlock');
-      const resetBlock = document.getElementById('resetPasswordBlock');
-      const updateBlock = document.getElementById('updatePasswordBlock');
-      const cardTitle = document.getElementById('loginCardTitle');
-      const passwordInput = document.getElementById('loginPassword');
-
-      document.querySelectorAll('.page-view').forEach(view => {
-        view.classList.remove('active');
-      });
-      const loginView = document.getElementById('view-login');
-      if (loginView) loginView.classList.add('active');
-
-      if (loginBlock) loginBlock.classList.add('hidden');
-      if (resetBlock) resetBlock.classList.add('hidden');
-      if (updateBlock) {
-        updateBlock.classList.remove('hidden');
-        updateBlock.style.display = 'block';
-      }
-      if (cardTitle) cardTitle.textContent = 'تعيين كلمة المرور الجديدة';
-      if (passwordInput) passwordInput.removeAttribute('required');
-    }
-
-    async function handleUpdatePassword(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      
-      const newPasswordInput = document.getElementById('newPasswordInput');
-      const confirmNewPasswordInput = document.getElementById('confirmNewPasswordInput');
-      const btn = document.getElementById('updatePasswordSubmitBtn');
-
-      const newPassword = newPasswordInput ? newPasswordInput.value : '';
-      const confirmNewPassword = confirmNewPasswordInput ? confirmNewPasswordInput.value : '';
-
-      if (!newPassword || newPassword.length < 6) {
-        showToast('كلمة المرور يجب أن تكون 6 أحرف أو أرقام على الأقل', false);
-        return;
-      }
-
-      if (newPassword !== confirmNewPassword) {
-        showToast('كلمتا المرور غير متطابقتين', false);
-        return;
-      }
-
-      if (!supabaseClient) {
-        showToast('خطأ: تعذر الاتصال بخادم قاعدة البيانات', false);
-        return;
-      }
-
-      if (btn) {
-        btn.disabled = true;
-        btn.classList.add('opacity-50');
-      }
-
-      try {
-        const { data, error } = await supabaseClient.auth.updateUser({
-          password: newPassword
-        });
-
-        if (error) {
-          showToast(error.message, false);
-          if (btn) {
-            btn.disabled = false;
-            btn.classList.remove('opacity-50');
-          }
-        } else {
-          showToast('تم حفظ كلمة المرور بنجاح! جاري تحويلك لتسجيل الدخول...', true);
-
-          if (newPasswordInput) newPasswordInput.value = '';
-          if (confirmNewPasswordInput) confirmNewPasswordInput.value = '';
-
-          if (window.history && window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.pathname);
-          }
-
-          setTimeout(() => {
-            const updateBlock = document.getElementById('updatePasswordBlock');
-            const loginBlock = document.getElementById('loginFieldsBlock');
-            const cardTitle = document.getElementById('loginCardTitle');
-            const passwordInput = document.getElementById('loginPassword');
-
-            if (updateBlock) {
-              updateBlock.classList.add('hidden');
-              updateBlock.style.display = '';
-            }
-            if (loginBlock) loginBlock.classList.remove('hidden');
-            if (cardTitle) cardTitle.textContent = 'تسجيل الدخول';
-            if (passwordInput) passwordInput.setAttribute('required', '');
-
-            navigateTo('login');
-          }, 1500);
-        }
-      } catch (err) {
-        showToast('حدث خطأ غير متوقع أثناء حفظ كلمة المرور', false);
-        if (btn) {
-          btn.disabled = false;
-          btn.classList.remove('opacity-50');
-        }
-      }
-    }
-
-    function checkRecoveryUrl() {
-      const hash = window.location.hash || '';
-      const search = window.location.search || '';
-      const fullUrl = window.location.href || '';
-
-      const isRecovery = 
-        hash.includes('type=recovery') || 
-        hash.includes('access_token') || 
-        search.includes('type=recovery') || 
-        search.includes('code=') ||
-        fullUrl.includes('type=recovery');
-
-      if (isRecovery) {
-        showUpdatePasswordForm();
-
-        if (search.includes('code=') && supabaseClient) {
-          const urlParams = new URLSearchParams(window.location.search);
-          const code = urlParams.get('code');
-          if (code && supabaseClient.auth.exchangeCodeForSession) {
-            supabaseClient.auth.exchangeCodeForSession(code).then(({ data, error }) => {
-              if (!error) {
-                showUpdatePasswordForm();
-              }
-            });
-          }
-        }
-      }
-    }
-
-    checkRecoveryUrl();
-    window.addEventListener('DOMContentLoaded', checkRecoveryUrl);
-    window.addEventListener('load', checkRecoveryUrl);
-
-    if (supabaseClient) {
-      supabaseClient.auth.onAuthStateChange((event, session) => {
-        if (event === "PASSWORD_RECOVERY" || (event === "SIGNED_IN" && (window.location.hash.includes('recovery') || window.location.search.includes('code=')))) {
-          showUpdatePasswordForm();
-        }
-      });
     }
   </script>
 </body>
