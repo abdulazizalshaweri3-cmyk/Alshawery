@@ -393,23 +393,6 @@
       }
     }
 
-    // التحقق التلقائي من مسار الرابط (Hash Routing) لفتح واجهة تسجيل الدخول مباشرة
-    function checkHashRoute() {
-      const hash = window.location.hash || '';
-      if (hash === '#login' || hash.includes('login')) {
-        navigateTo('login');
-      } else if (hash === '#register' || hash.includes('register')) {
-        navigateTo('register');
-      } else if (hash === '#apps' || hash.includes('apps')) {
-        navigateTo('apps');
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', checkHashRoute);
-    window.addEventListener('hashchange', checkHashRoute);
-    // تنفيذ فوري لضمان الاستجابة السريعة
-    checkHashRoute();
-
     async function handleRegister(e) {
       e.preventDefault();
       const name = document.getElementById('regName').value;
