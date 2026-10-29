@@ -44,7 +44,7 @@
       body { overscroll-behavior: none; }
     }
     ::-webkit-scrollbar { display: none; }
-    .font-arabic { font-family: 'Alexandria', 'Plus Jakarta Sans', sans-serif; }
+    .font-arabic { font-family: 'Alexandria', sans-serif; }
     .font-serif-lux { font-family: 'Playfair Display', serif; }
     .page-view { display: none; }
     .page-view.active { display: block; }
@@ -75,7 +75,7 @@
             "on-surface-variant": "#c9c2b0"
           },
           fontFamily: {
-            sans: ['Alexandria', 'Plus Jakarta Sans', 'sans-serif'],
+            sans: ['Alexandria', 'sans-serif'],
             serif: ['Playfair Display', 'serif']
           }
         }
@@ -231,7 +231,7 @@
 </div>
 <div>
 <h2 class="text-xl font-bold text-on-surface">Budget indicator</h2>
-<span class="inline-block text-xs text-secondary mt-0.5">2.29 MB • الإصدار 1.0</span>
+<span class="inline-block text-xs text-secondary mt-0.5 font-sans">2.29 MB • الإصدار 1.0</span>
 </div>
 </div>
 </div>
@@ -355,8 +355,7 @@
 <img alt="Budget Indicator" class="w-full h-full object-contain filter drop-shadow invert brightness-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-o-b50TQPcER8KtT3BVwEsSUpWSIPIeQ9fG-fHJsYGO-eeDh-QpEeDncin4etO9USDVjc8QAamYAxXY7NonIQFOKK0_OYLx7zQXv_l6pxvSOIs0I1U60q1jEjqSDtLlJfaJtPdI8RFAE3IRVg85QVLlSW8foYyRqDxBmZpZn3-rr6fof-LhwOs0gzkmkvbt2bfSEnTeoZ5dFROLj3zNcOJEL3eZOrTybE_GLT_y59S9AxV4XkEktFXUtn4c4NjiKJOCE"/>
 </div>
 <div>
-<h3 class="text-base sm:text-lg font-bold text-on-surface">Budget indicator</h3>
-<span class="text-xs text-secondary font-mono">عن التطبيق</span>
+<h3 class="text-base sm:text-lg font-bold text-on-surface">عن تطبيق Budget indicator</h3>
 </div>
 </div>
 <button class="w-9 h-9 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/50 text-outline hover:text-primary flex items-center justify-center transition-all cursor-pointer" onclick="toggleBudgetModal(false)" title="إغلاق" type="button">
@@ -369,43 +368,43 @@
 في إدارة الميزانية، رقم الرصيد وحده لا يكفي. الأهم أن ترى ما تبقّى من الشهر إلى جانب ما تبقّى من رصيدك، لتفهم وضعك قبل أن تتفاجأ بنهاية الشهر.
 </p>
 <p class="leading-relaxed">
-يجمع مؤشر هذين المؤشرين في واجهة واحدة: «المتبقي من الشهر» يوضح نسبة الأيام المتبقية من الشهر الحالي، و«المتبقي من الرصيد» يوضح نسبة رصيدك الحالي مقارنة برصيد بداية الشهر المسجّل. اقرأهما جنباً إلى جنب لتلاحظ إن كان رصيدك يتناقص أسرع من الوقت. فإذا بقي نحو نصف الشهر، بينما انخفض الرصيد إلى نحو الربع، يظهر لك هذا الفرق بوضوح — وتستطيع أن تعيد ضبط إنفاقك مبكراً.
+يجمع مؤشر الميزانية هذين المؤشرين في واجهة واحدة: «المتبقي من الشهر» يوضح نسبة الأيام المتبقية من الشهر الحالي، و«المتبقي من الرصيد» يوضح نسبة رصيدك الحالي مقارنة برصيد بداية الشهر المسجّل. اقرأهما جنباً إلى جنب لتلاحظ إن كان رصيدك يتناقص أسرع من الوقت. فإذا بقي نحو نصف الشهر، بينما انخفض الرصيد إلى نحو الربع، يظهر لك هذا الفرق بوضوح — وتستطيع أن تعيد ضبط إنفاقك مبكراً.
 </p>
 <p class="leading-relaxed">
 مؤشر الميزانية يحوّل سجلّك اليدوي إلى قراءة عملية: كم بقي؟ ما الحد اليومي المناسب وفق رصيدك والأيام المتبقية؟ وإلى متى قد يغطيك معدل إنفاقك المسجّل؟
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">رصيدك في لمحة</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">رصيدك في لمحة</h4>
 <p class="leading-relaxed">
 تعرض اللوحة الرئيسية الرصيد المتبقي، والحد اليومي المحسوب من رصيدك والأيام المتبقية، وعدد الأيام المتبقية، ونسبة الشهر الباقية، ونسبة الرصيد الباقي مقارنة برصيد بداية الشهر. وتساعد الألوان المتدرجة في مؤشر الرصيد على ملاحظة انخفاضه بسرعة.
 </p>
 <p class="leading-relaxed">
 كما تعرض مؤشرات الميزانية معدل الإنفاق المسجّل، ومدة تغطية الرصيد، والتاريخ التقديري لنفاده استناداً إلى ذلك المعدل، عندما تتوفر بيانات كافية. بدلاً من متابعة رقم الرصيد وحده، تحصل على صورة أوضح لما قد يعنيه هذا الرصيد للأيام القادمة.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">سجّل حركاتك بنفسك</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">سجّل حركاتك بنفسك</h4>
 <p class="leading-relaxed">
-أدخل رصيدك الافتتاحي لبدء السجل، ثم أضف المدخول والنفقات من واجهة تسجيل مخصصة. تُحدَّث قراءة الميزانية والتحليلات وفق الحركات التي تسجّلها. ميزانك للميزانية اليدوية، ولا يحتاج إلى ربط حسابك البنكي.
+أدخل رصيدك الافتتاحي لبدء السجل، ثم أضف المدخول والنفقات من واجهة تسجيل مخصصة. تُحدَّث قراءة الميزانية والتحليلات وفق الحركات التي تسجّلها. مؤشر الميزانية للميزانية اليدوية، ولا يحتاج إلى ربط حسابك البنكي.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">افهم أداءك أسبوعاً وشهراً وسنة</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">افهم أداءك أسبوعاً وشهراً وسنة</h4>
 <p class="leading-relaxed">
 في قسم التحليل المالي، اختر هذا الأسبوع أو هذا الشهر أو هذه السنة لمراجعة الدخل، والنفقات، والصافي التراكمي. تساعدك الرسوم على رؤية ما دخل إلى ميزانيتك وما خرج منها، ومتابعة أثر الحركات المسجلة عبر الفترة.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">راقب اتجاه الرصيد وقارن الأداء</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">راقب اتجاه الرصيد وقارن الأداء</h4>
 <p class="leading-relaxed">
 تابع اتجاه رصيدك على مدى الأسبوع أو الشهر أو السنة. وقارن الشهر الحالي بالشهر السابق، مع مؤشرات توضح مقدار التغير وحصة الرصيد الحالية. تساعدك المقارنة على فهم الاتجاه، لا الاكتفاء برقم اليوم.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">خطّط لما تبقّى من السنة</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">خطّط لما تبقّى من السنة</h4>
 <p class="leading-relaxed">
 تعرض خطة الرصيد الحد اليومي الذي يساعدك على توزيع رصيدك الحالي حتى نهاية كل شهر متبقٍ من السنة، مع عدد الأيام والحد اليومي لكل نهاية شهر. تُحسب الخطة من تاريخ اليوم، وتشمل اليوم الحالي، لتعرف كيف يؤثر استمرارك في الإنفاق على رصيدك.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">اختبر أثر المصروف قبل أن تقرره</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">اختبر أثر المصروف قبل أن تقرره</h4>
 <p class="leading-relaxed">
 هل تفكر في مصروف إضافي؟ أدخل قيمته في محاكي «ماذا لو؟» لتشاهد الرصيد المتوقع بعده، والحد اليومي الجديد، والفرق عن المسموح حالياً، وآخر يوم يغطيه الرصيد وفق البيانات المتاحة. جرّب أثر المصروف على خطتك قبل اتخاذ القرار.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">قراءة تحليلية مبنية على بياناتك</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">قراءة تحليلية مبنية على بياناتك</h4>
 <p class="leading-relaxed">
-يربط التحليل الذكي بين الرصيد ومعدل الإنفاق والأيام المتبقية، ويقارن متوسط مصروفاتك المسجّل بالحد اليومي المخطط. كما يوضح مستوى كفاية البيانات؛ فإذا لم تكن الحركات كافية لقراءة موثوقة، يخبرك بذلك بدلاً من عرض نتيجة توحي بدقة غير متاحة.
+يربط التحليل الذكي بين الرصيد ومعدل الإنفاق والأيام المتبقية، ويقارن متوسط مصروفاتك المسجّل بالحد اليومي المخطط. كما يوضح مستوى كفاية البيانات، فإذا لم تكن الحركات كافية لقراءة موثوقة، يخبرك بذلك بدلاً من عرض نتيجة توحي بدقة غير متاحة.
 </p>
-<h4 class="text-sm sm:text-base font-bold text-primary pt-2">أخفِ المبالغ على الشاشة</h4>
+<h4 class="text-sm sm:text-base font-bold text-primary pt-2 font-sans">أخفِ المبالغ على الشاشة</h4>
 <p class="leading-relaxed">
 أخفِ المبالغ الظاهرة بلمسة، وتعود مخفية تلقائياً عند مغادرة الصفحة أو فقدان الشاشة للتركيز. إخفاء بصري سريع يساعدك على عدم إبقاء أرقام ميزانيتك معروضة أمام الآخرين.
 </p>
