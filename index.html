@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html class="dark" dir="rtl" lang="ar">
-<head>
+
+<html class="dark" dir="rtl" lang="ar"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCRESKBTWW"></script>
 <script>
@@ -50,9 +50,6 @@
     .font-serif-lux { font-family: 'Playfair Display', serif; }
     .page-view { display: none; }
     .page-view.active { display: block; }
-    .custom-scroll::-webkit-scrollbar { width: 4px; display: block; }
-    .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-    .custom-scroll::-webkit-scrollbar-thumb { background: #353331; border-radius: 9999px; }
   </style>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -226,7 +223,7 @@
 </button>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- بطاقة Budget indicator المطابقة 100% للتصميم الأصلي بالصورة -->
+<!-- بطاقة Budget indicator -->
 <div class="rounded-2xl bg-surface-container/70 border border-outline-variant/40 hover:border-primary/50 backdrop-blur-xl p-6 transition-all duration-300 shadow-xl flex flex-col justify-between">
 <div>
 <div class="flex items-center justify-between mb-4">
@@ -236,7 +233,7 @@
 </div>
 <div>
 <h2 class="text-xl font-bold text-on-surface">Budget indicator</h2>
-<span class="inline-block text-xs font-sans text-secondary mt-0.5">MB 24.11 • الإصدار 1.0</span>
+<span class="inline-block text-xs font-sans text-secondary mt-0.5">24.11 MB • الإصدار 1.0</span>
 </div>
 </div>
 </div>
@@ -244,16 +241,16 @@
             تطبيق خاص لمعرفة حالة الرصيد، ومن خلاله تستطيع معرفة كافة التفاصيل المتعلقة برصيدك بدقة وسهولة.
           </p>
 </div>
-<!-- الأزرار الرأسية المطابقة تماماً للصورة الأصلية تحت بعضهما البعض -->
+<!-- الترتيب الأصلي المعتمد للأزرار: زر عن التطبيق بالأعلى وزر تحميل التطبيق بالأسفل -->
 <div class="space-y-3 pt-2">
+<button class="w-full py-3 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface hover:text-primary border border-outline-variant/60 text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 group cursor-pointer" onclick="openAboutModal()" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform">info</span>
+<span>عن التطبيق</span>
+</button>
 <a class="w-full py-3 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface hover:text-primary border border-outline-variant/60 text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 group" download="BudgetIndicator.apk" href="BudgetIndicator.apk">
 <span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform">download</span>
 <span>تحميل التطبيق</span>
 </a>
-<button class="w-full py-3 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface hover:text-primary border border-outline-variant/60 text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 cursor-pointer group" onclick="openAboutModal()" type="button">
-<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform">info</span>
-<span>عن التطبيق</span>
-</button>
 </div>
 </div>
 <!-- خانة التطبيقات القادمة: بطاقة أنيقة فارغة كلياً من أي نصوص أو كتابة -->
@@ -351,115 +348,160 @@
 </div>
 </div>
 </main>
-
-<!-- ==================== النافذة المنبثقة: عن التطبيق (معزولة الترويسة ومضبوطة بالملي) ==================== -->
-<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="aboutModal" onclick="handleModalBackdropClick(event)">
-  <div class="relative w-full max-w-lg max-h-[88vh] rounded-3xl bg-[#141312] border border-outline-variant/60 shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="aboutModalContent">
-    
-    <!-- الترويسة المعزولة بالكامل ذات الخلفية المصمتة الداكنة لعدم تداخل النصوص عند التمرير -->
-    <div class="w-full px-5 py-4 bg-[#181716] border-b border-outline-variant/40 flex items-center justify-between shrink-0 z-20">
-      <!-- زر الإغلاق المتناسق والموزون هندسياً -->
-      <button type="button" onclick="closeAboutModal()" class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant/50 text-on-surface hover:text-primary flex items-center justify-center transition-all active:scale-95 cursor-pointer shadow-md" title="إغلاق">
-        <span class="material-symbols-outlined text-[20px]">close</span>
-      </button>
-
-      <!-- عنوان التطبيق وبياناته الرسمية والأيقونة المعتمدة -->
-      <div class="flex items-center gap-3">
-        <div class="text-right">
-          <h3 class="text-base sm:text-lg font-bold text-on-surface leading-tight">Budget indicator</h3>
-          <span class="inline-block text-xs font-sans text-secondary mt-0.5" dir="rtl">MB 24.11 • الإصدار 1.0</span>
-        </div>
-        <div class="w-10 h-10 rounded-xl bg-surface-container-highest border border-primary/30 flex items-center justify-center p-1.5 shadow-inner">
-          <img alt="Budget Indicator" class="w-full h-full object-contain filter drop-shadow invert brightness-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-o-b50TQPcER8KtT3BVwEsSUpWSIPIeQ9fG-fHJsYGO-eeDh-QpEeDncin4etO9USDVjc8QAamYAxXY7NonIQFOKK0_OYLx7zQXv_l6pxvSOIs0I1U60q1jEjqSDtLlJfaJtPdI8RFAE3IRVg85QVLlSW8foYyRqDxBmZpZn3-rr6fof-LhwOs0gzkmkvbt2bfSEnTeoZ5dFROLj3zNcOJEL3eZOrTybE_GLT_y59S9AxV4XkEktFXUtn4c4NjiKJOCE"/>
-        </div>
-      </div>
-    </div>
-
-    <!-- قسم المحتوى والتمرير المعزول تماماً أسفل الترويسة -->
-    <div class="flex-1 overflow-y-auto overscroll-contain p-6 space-y-6 custom-scroll text-right">
-      
-      <!-- الفقرة التمهيدية المنقحة المعتمدة -->
-      <p class="text-sm text-on-surface-variant font-light leading-relaxed">
-        في إدارة الميزانية، رقم الرصيد وحده لا يكفي. الأهم أن ترى ما تبقّى من الشهر إلى جانب ما تبقّى من رصيدك، لتفهم وضعك قبل أن تتخذ قراراتك.
-      </p>
-
-      <!-- القسم 1: اختبر أثر المصروف قبل أن تقرره -->
-      <div class="space-y-2">
-        <h4 class="text-base font-bold text-primary">اختبر أثر المصروف قبل أن تقرره</h4>
-        <p class="text-sm text-on-surface-variant font-light leading-relaxed">
-          هل تفكر في مصروف إضافي؟ أدخل قيمته في محاكي «ماذا لو؟» لتشاهد الرصيد المتوقع بعده، والحد اليومي الجديد، والفرق عن المسموح حالياً، وآخر يوم يغطيه الرصيد وفق البيانات المتاحة. جرّب أثر المصروف على خطتك قبل اتخاذ القرار.
-        </p>
-      </div>
-
-      <!-- القسم 2: قراءة تحليلية مبنية على بياناتك -->
-      <div class="space-y-2">
-        <h4 class="text-base font-bold text-primary">قراءة تحليلية مبنية على بياناتك</h4>
-        <p class="text-sm text-on-surface-variant font-light leading-relaxed">
-          يربط التحليل الذكي بين الرصيد ومعدل الإنفاق والأيام المتبقية، ويقارن متوسط مصروفاتك المسجّل بالحد اليومي المخطط. كما يوضح مستوى كفاية البيانات، فإذا لم تكن الحركات كافية لقراءة موثوقة، يخبرك بذلك بدلاً من عرض نتيجة توحي بدقة غير متاحة.
-        </p>
-      </div>
-
-      <!-- القسم 3: أخفِ المبالغ على الشاشة -->
-      <div class="space-y-2">
-        <h4 class="text-base font-bold text-primary">أخفِ المبالغ على الشاشة</h4>
-        <p class="text-sm text-on-surface-variant font-light leading-relaxed">
-          أخفِ المبالغ الظاهرة بلمسة، وتعود مخفية تلقائياً عند مغادرة الصفحة أو فقدان الشاشة للتركيز. إخفاء بصري سريع يساعدك على عدم إبقاء أرقام ميزانيتك معروضة أمام الآخرين.
-        </p>
-      </div>
-
-      <!-- الخاتمة الرسمية -->
-      <p class="text-sm text-secondary font-medium pt-2 border-t border-outline-variant/20 leading-relaxed">
-        تابع رصيدك، وافهم وتيرة إنفاقك، وخطط لقراراتك اليومية على أساس أوضح.
-      </p>
-    </div>
-
-  </div>
-</div>
-
 <!-- الفوتر المعتمد -->
 <footer class="w-full border-t border-outline-variant/20 bg-surface-container-lowest/80 py-8">
 <div class="max-w-5xl mx-auto px-6 flex items-center justify-center text-xs text-outline">
 <p class="font-sans text-xs">© 2026 جميع الحقوق محفوظة.</p>
 </div>
 </footer>
+
+<!-- نافذة عن التطبيق المنبثقة: ترويسة مصمتة 100% معزولة بالكامل تمنع ظهور أي نص خلفها + النص الكامل الشامل -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 opacity-0 transition-opacity duration-300" id="aboutModal">
+<div class="relative w-full max-w-lg max-h-[85vh] rounded-3xl bg-[#141312] border border-outline-variant/60 shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300">
+  
+  <!-- الترويسة العلوية المصمتة تماماً بدون أي شفافية لحجب صعود أي نصوص خلفها -->
+  <div class="sticky top-0 z-20 bg-[#181716] border-b border-outline-variant/40 px-5 sm:px-6 py-4 flex items-center justify-between shadow-md">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-surface-container-highest border border-primary/40 text-primary flex items-center justify-center shadow-inner overflow-hidden p-1.5 shrink-0">
+        <img alt="Budget Indicator" class="w-full h-full object-contain filter drop-shadow invert brightness-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-o-b50TQPcER8KtT3BVwEsSUpWSIPIeQ9fG-fHJsYGO-eeDh-QpEeDncin4etO9USDVjc8QAamYAxXY7NonIQFOKK0_OYLx7zQXv_l6pxvSOIs0I1U60q1jEjqSDtLlJfaJtPdI8RFAE3IRVg85QVLlSW8foYyRqDxBmZpZn3-rr6fof-LhwOs0gzkmkvbt2bfSEnTeoZ5dFROLj3zNcOJEL3eZOrTybE_GLT_y59S9AxV4XkEktFXUtn4c4NjiKJOCE"/>
+      </div>
+      <div>
+        <h3 class="text-base sm:text-lg font-bold text-on-surface leading-tight">Budget indicator</h3>
+        <span class="inline-block text-xs font-sans text-secondary mt-0.5">24.11 MB • الإصدار 1.0</span>
+      </div>
+    </div>
+    <button class="w-9 h-9 rounded-xl bg-surface-container-highest hover:bg-surface-container-high border border-outline-variant/50 text-outline hover:text-primary flex items-center justify-center transition-colors cursor-pointer" onclick="closeAboutModal()" title="إغلاق" type="button">
+      <span class="material-symbols-outlined text-[20px]">close</span>
+    </button>
+  </div>
+
+  <!-- محتوى النص الكامل حرفياً كلمة بكلمة لبطاقة عن التطبيق بخط Alexandria المتناسق -->
+  <div class="overflow-y-auto px-5 sm:px-6 py-5 space-y-6 text-on-surface font-sans text-xs sm:text-sm leading-relaxed" style="overscroll-behavior: contain;">
+    
+    <!-- المقدمة الكاملة -->
+    <div class="space-y-3 pb-2 border-b border-outline-variant/30">
+      <p class="text-on-surface font-medium leading-relaxed">
+        في إدارة الميزانية، رقم الرصيد وحده لا يكفي. الأهم أن ترى ما تبقّى من الشهر إلى جانب ما تبقّى من رصيدك، لتفهم وضعك قبل أن تتفاجأ بنهاية الشهر.
+      </p>
+      <p class="text-on-surface-variant leading-relaxed">
+        يجمع مؤشر الميزانية هذين المؤشرين في واجهة واحدة: «المتبقي من الشهر» يوضح نسبة الأيام المتبقية من الشهر الحالي، و«المتبقي من الرصيد» يوضح نسبة رصيدك الحالي مقارنة برصيد بداية الشهر المسجّل. اقرأهما جنباً إلى جنب لتلاحظ إن كان رصيدك يتناقص أسرع من الوقت. فإذا بقي نحو نصف الشهر، بينما انخفض الرصيد إلى نحو الربع، يظهر لك هذا الفرق بوضوح وتستطيع أن تعيد ضبط إنفاقك مبكراً.
+      </p>
+      <p class="text-on-surface-variant leading-relaxed">
+        مؤشر الميزانية يحوّل سجلّك اليدوي إلى قراءة عملية: كم بقي؟ ما الحد اليومي المناسب وفق رصيدك والأيام المتبقية؟ وإلى متى قد يغطيك معدل إنفاقك المسجّل؟
+      </p>
+    </div>
+
+    <!-- القسم 1 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>رصيدك في لمحة</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        تعرض اللوحة الرئيسية الرصيد المتبقي، والحد اليومي المحسوب من رصيدك والأيام المتبقية، وعدد الأيام المتبقية، ونسبة الشهر الباقية، ونسبة الرصيد الباقي مقارنة برصيد بداية الشهر. وتساعد الألوان المتدرجة في مؤشر الرصيد على ملاحظة انخفاضه بسرعة.
+      </p>
+      <p class="text-on-surface-variant leading-relaxed">
+        كما تعرض مؤشرات الميزانية معدل الإنفاق المسجّل، ومدة تغطية الرصيد، والتاريخ التقديري لنفاده استناداً إلى ذلك المعدل، عندما تتوفر بيانات كافية. بدلاً من متابعة رقم الرصيد وحده، تحصل على صورة أوضح لما قد يعنيه هذا الرصيد للأيام القادمة.
+      </p>
+    </div>
+
+    <!-- القسم 2 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>سجّل حركاتك بنفسك</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        أدخل رصيدك الافتتاحي لبدء السجل، ثم أضف المدخول والنفقات من واجهة تسجيل مخصصة. تُحدَّث قراءة الميزانية والتحليلات وفق الحركات التي تسجّلها. مؤشر الميزانية للميزانية اليدوية، ولا يحتاج إلى ربط حسابك البنكي.
+      </p>
+    </div>
+
+    <!-- القسم 3 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>افهم أداءك أسبوعاً وشهراً وسنة</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        في قسم التحليل المالي، اختر هذا الأسبوع أو هذا الشهر أو هذه السنة لمراجعة الدخل، والنفقات، والصافي التراكمي. تساعدك الرسوم على رؤية ما دخل إلى ميزانيتك وما خرج منها، ومتابعة أثر الحركات المسجلة عبر الفترة.
+      </p>
+    </div>
+
+    <!-- القسم 4 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>راقب اتجاه الرصيد وقارن الأداء</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        تابع اتجاه رصيدك على مدى الأسبوع أو الشهر أو السنة. وقارن الشهر الحالي بالشهر السابق، مع مؤشرات توضح مقدار التغير وحصة الرصيد الحالية. تساعدك المقارنة على فهم الاتجاه، لا الاكتفاء برقم اليوم.
+      </p>
+    </div>
+
+    <!-- القسم 5 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>خطّط لما تبقّى من السنة</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        تعرض خطة الرصيد الحد اليومي الذي يساعدك على توزيع رصيدك الحالي حتى نهاية كل شهر متبقٍ من السنة، مع عدد الأيام والحد اليومي لكل نهاية شهر. تُحسب الخطة من تاريخ اليوم، وتشمل اليوم الحالي، لتعرف كيف يؤثر استمرارك في الإنفاق على رصيدك.
+      </p>
+    </div>
+
+    <!-- القسم 6 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>اختبر أثر المصروف قبل أن تقرره</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        هل تفكر في مصروف إضافي؟ أدخل قيمته في محاكي «ماذا لو؟» لتشاهد الرصيد المتوقع بعده، والحد اليومي الجديد، والفرق عن المسموح حالياً، وآخر يوم يغطيه الرصيد وفق البيانات المتاحة. جرّب أثر المصروف على خطتك قبل اتخاذ القرار.
+      </p>
+    </div>
+
+    <!-- القسم 7 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>قراءة تحليلية مبنية على بياناتك</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        يربط التحليل الذكي بين الرصيد ومعدل الإنفاق والأيام المتبقية، ويقارن متوسط مصروفاتك المسجّل بالحد اليومي المخطط. كما يوضح مستوى كفاية البيانات، فإذا لم تكن الحركات كافية لقراءة موثوقة، يخبرك بذلك بدلاً من عرض نتيجة توحي بدقة غير متاحة.
+      </p>
+    </div>
+
+    <!-- القسم 8 -->
+    <div class="space-y-2">
+      <h4 class="text-sm sm:text-base font-bold text-primary flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+        <span>أخفِ المبالغ على الشاشة</span>
+      </h4>
+      <p class="text-on-surface-variant leading-relaxed">
+        أخفِ المبالغ الظاهرة بلمسة، وتعود مخفية تلقائياً عند مغادرة الصفحة أو فقدان الشاشة للتركيز. إخفاء بصري سريع يساعدك على عدم إبقاء أرقام ميزانيتك معروضة أمام الآخرين.
+      </p>
+    </div>
+
+    <!-- الخاتمة الكاملة -->
+    <div class="pt-3 border-t border-outline-variant/30">
+      <p class="text-primary font-medium leading-relaxed">
+        مؤشر الميزانية أداة لإدارة الميزانية يدوياً. راقب الوقت المتبقي مقابل الرصيد المتبقي، افهم وتيرة إنفاقك، وخطط لقراراتك اليومية على أساس أوضح.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
 <!-- إشعار التنبيه المنبثق -->
 <div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-surface-container-highest border border-primary/40 text-on-surface px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5 opacity-0 pointer-events-none transition-all duration-300 z-50 transform translate-y-3" id="toastNotification">
 <span class="material-symbols-outlined text-primary text-[20px]" id="toastIcon">check_circle</span>
 <span class="text-xs sm:text-sm font-semibold text-on-surface" id="toastMessage">تمت العملية بنجاح</span>
 </div>
-<!-- سكربت التنقل وربط Supabase والنسخ والراوتينغ والنافذة المنبثقة -->
+
+<!-- سكربت التنقل وربط Supabase والنافذة المنبثقة والنسخ والراوتينغ -->
 <script>
-    // دوال فتح وإغلاق نافذة عن التطبيق
-    function openAboutModal() {
-      const modal = document.getElementById('aboutModal');
-      const content = document.getElementById('aboutModalContent');
-      if (modal && content) {
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        modal.classList.add('opacity-100');
-        content.classList.remove('scale-95');
-        content.classList.add('scale-100');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeAboutModal() {
-      const modal = document.getElementById('aboutModal');
-      const content = document.getElementById('aboutModalContent');
-      if (modal && content) {
-        modal.classList.remove('opacity-100');
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        content.classList.remove('scale-100');
-        content.classList.add('scale-95');
-        document.body.style.overflow = '';
-      }
-    }
-
-    function handleModalBackdropClick(e) {
-      if (e.target.id === 'aboutModal') {
-        closeAboutModal();
-      }
-    }
-
     // تهيئة Supabase الرسمية
     const SUPABASE_URL = "https://jzfqyhskxfsfsrglmbac.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6ZnF5aHNreGZzZnNyZ2xtYmFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5MDUyMDMsImV4cCI6MjEwNzQ4MTIwM30.5Wx2X8GgXQWQ4_W6vExY3QZ_PhND3T_D68Iq-03LjYE";
@@ -469,7 +511,42 @@
       supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     }
 
-    // دالة فحص وتوجيه الهاش تلقائياً (مثل العودة لتسجيل الدخول بعد حفظ كلمة المرور)
+    // دوال فتح وإغلاق نافذة عن التطبيق
+    function openAboutModal() {
+      const modal = document.getElementById('aboutModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modal.firstElementChild.classList.remove('scale-95');
+        }, 10);
+      }
+    }
+
+    function closeAboutModal() {
+      const modal = document.getElementById('aboutModal');
+      if (modal) {
+        modal.classList.add('opacity-0');
+        modal.firstElementChild.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    // إغلاق النافذة عند الضغط على الخلفية الخارجية
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('aboutModal');
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeAboutModal();
+          }
+        });
+      }
+    });
+
+    // دالة فحص وتوجيه الهاش تلقائياً
     function checkHashRoute() {
       const hash = window.location.hash;
       if (hash === '#login') {
